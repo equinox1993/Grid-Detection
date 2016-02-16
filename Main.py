@@ -1,11 +1,18 @@
 __author__ = 'Edwin'
 
+import numpy as np
 import cv2
 import utils.image.draw_tools as draw
 import utils.image.algorithms as imalg
 import utils.image.binarization as binz
+import utils.image.split as split
+import utils.image.save as sv
+import time
+import os
 
+# img = cv2.imread("sample/sudoku.jpg")
 img = cv2.imread("sample/table1r.jpg")
+imgcopy = np.copy(img)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 binary = binz.threshold(gray, 200)
@@ -29,3 +36,11 @@ draw.draw_points(img, vertices)
 
 cv2.imshow('img', img)
 cv2.waitKey(0)
+
+grid_img = split.split_grid(imgcopy, v_mat)
+# print grid_img
+
+# out_folder = 'output/' + time.strftime("%Y%m%d%H%m%S")
+# if not os.path.exists(out_folder):
+#     os.mkdir(out_folder)
+# sv.save_cropped_image_grids(grid_img, sv.get_default_filename_func(out_folder))
