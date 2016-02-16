@@ -1,5 +1,5 @@
 
-  const char features[] = {"\n"
+  const char features[] = {""
 "CXX_FEATURE:"
 #if ((__clang_major__ * 100) + __clang_minor__) >= 400 && __has_feature(cxx_aggregate_nsdmi)
 "1"
